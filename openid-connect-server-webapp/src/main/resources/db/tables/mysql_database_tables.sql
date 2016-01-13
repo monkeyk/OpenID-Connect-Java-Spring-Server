@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS access_token (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	token_value VARCHAR(4096),
+	token_value TEXT,
 	expiration TIMESTAMP NULL,
 	token_type VARCHAR(256),
 	refresh_token_id BIGINT,
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS client_details (
 	allow_introspection BOOLEAN DEFAULT false NOT NULL,
 	id_token_validity_seconds BIGINT DEFAULT 600 NOT NULL,
 	
-	client_id VARCHAR(256),
+	client_id VARCHAR(255),
 	client_secret VARCHAR(2048),
 	access_token_validity_seconds BIGINT,
 	refresh_token_validity_seconds BIGINT,
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS client_details (
 	tos_uri VARCHAR(2048),
 
 	jwks_uri VARCHAR(2048),
-	jwks VARCHAR(8192),
+	jwks TEXT,
 	sector_identifier_uri VARCHAR(2048),
 	
 	request_object_signing_alg VARCHAR(256),
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS token_scope (
 
 CREATE TABLE IF NOT EXISTS system_scope (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	scope VARCHAR(256) NOT NULL,
+	scope VARCHAR(255) NOT NULL,
 	description VARCHAR(4096),
 	icon VARCHAR(256),
 	restricted BOOLEAN DEFAULT false NOT NULL,
@@ -358,7 +358,7 @@ CREATE TABLE IF NOT EXISTS saved_registered_client (
 );
 
 
-CREATE INDEX at_tv_idx ON access_token(token_value(767));
+CREATE INDEX at_tv_idx ON access_token(token_value(255));
 CREATE INDEX ts_oi_idx ON token_scope(owner_id);
 CREATE INDEX at_exp_idx ON access_token(expiration);
 CREATE INDEX rf_ahi_idx ON refresh_token(auth_holder_id);
