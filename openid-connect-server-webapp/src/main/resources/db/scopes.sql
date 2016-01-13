@@ -10,7 +10,7 @@ START TRANSACTION;
 -- Insert scope information into the temporary tables.
 -- 
 
-INSERT INTO system_scope_TEMP (scope, description, icon, restricted, default_scope, structured, structured_param_description) VALUES
+INSERT INTO system_scope (scope, description, icon, restricted, default_scope, structured, structured_param_description) VALUES
   ('openid', 'log in using your identity', 'user', false, true, false, null),
   ('profile', 'basic profile information', 'list-alt', false, true, false, null),
   ('email', 'email address', 'envelope', false, true, false, null),

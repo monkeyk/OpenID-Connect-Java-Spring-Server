@@ -10,26 +10,27 @@ START TRANSACTION;
 -- Insert client information into the temporary tables. To add clients to the HSQL database, edit things here.
 -- 
 
-INSERT INTO client_details_TEMP (client_id, client_secret, client_name, dynamically_registered, refresh_token_validity_seconds, access_token_validity_seconds, id_token_validity_seconds, allow_introspection) VALUES
-	('client', 'secret', 'Test Client', false, null, 3600, 600, true);
+INSERT INTO client_details (id, client_id, client_secret, client_name, dynamically_registered, refresh_token_validity_seconds, access_token_validity_seconds, id_token_validity_seconds, allow_introspection)
+VALUES
+	(21, 'client', 'secret', 'Test Client', false, null, 3600, 600, true);
 
-INSERT INTO client_scope_TEMP (owner_id, scope) VALUES
-	('client', 'openid'),
-	('client', 'profile'),
-	('client', 'email'),
-	('client', 'address'),
-	('client', 'phone'),
-	('client', 'offline_access');
+INSERT INTO client_scope (owner_id, scope) VALUES
+	(21, 'openid'),
+	(21, 'profile'),
+	(21, 'email'),
+	(21, 'address'),
+	(21, 'phone'),
+	(21, 'offline_access');
 
-INSERT INTO client_redirect_uri_TEMP (owner_id, redirect_uri) VALUES
-	('client', 'http://localhost/'),
-	('client', 'http://localhost:8080/');
+INSERT INTO client_redirect_uri (owner_id, redirect_uri) VALUES
+	(21, 'http://localhost/'),
+	(21, 'http://localhost:8080/');
 	
-INSERT INTO client_grant_type_TEMP (owner_id, grant_type) VALUES
-	('client', 'authorization_code'),
-	('client', 'urn:ietf:params:oauth:grant_type:redelegate'),
-	('client', 'implicit'),
-	('client', 'refresh_token');
+INSERT INTO client_grant_type (owner_id, grant_type) VALUES
+	(21, 'authorization_code'),
+	(21, 'urn:ietf:params:oauth:grant_type:redelegate'),
+	(21, 'implicit'),
+	(21, 'refresh_token');
 	
 --
 -- Merge the temporary clients safely into the database. This is a two-step process to keep clients from being created on every startup with a persistent store.
